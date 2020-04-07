@@ -1,13 +1,13 @@
 # See http://help.github.com/ignore-files/ for more about ignoring files.
-
+._*
 # compiled output
 /dist
 /tmp
 /out-tsc
-
+/target
 # dependencies
 /node_modules
-
+.*.DS_Store*
 # IDEs and editors
 /.idea
 .project

@@ -1,0 +1,34 @@
+version: '3'
+services:
+  smoke-tests:
+    image: bbachin1/protractor-e2e-tests
+    command: npm run e2e:smoke
+    container_name: smoke-tests
+    volumes:
+      - $PWD:/opt/protractor
+  uat-tests:
+    image: bbachin1/protractor-e2e-tests
+    command: npm run e2e:uat
+    container_name: uat-tests
+    volumes:
+      - $PWD:/opt/protractor
+  regression-tests:
+    image: bbachin1/protractor-e2e-tests
+    command: npm run e2e:regression
+    container_name: regression-tests
+    volumes:
+      - $PWD:/opt/protractor
+  ide-edit:
+    image: theiaide/theia:next
+    command: --inspect=0.0.0.0:9229
+    container_name: theiaide-edit
+    volumes:
+      - $PWD:/home/project:cached
+    ports:
+      - 4200:4200 
+      - 3000:3000
+      - 9229:9229
+    expose:
+      - 9229
+      - 3000 
+      - 4200 
